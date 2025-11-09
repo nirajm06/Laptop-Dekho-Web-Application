@@ -1,0 +1,279 @@
+/* ---------------- Navbar Base ---------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #36aab9, #14565E);
+  color: white;
+  padding: 12px 30px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+/* ---------------- Logo ---------------- */
+.logo {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #facc15, #f97316, #ef4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo h1 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* ---------------- Navigation Links ---------------- */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+  opacity: 1;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: 0.3s;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.nav-links li a:hover {
+  color: #f4c430;
+}
+
+.nav-links li .active {
+  background: linear-gradient(90deg, #facc15, #f97316, #ef4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+/* ---------------- Search Form ---------------- */
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 20px;
+  flex-wrap: wrap;
+}
+
+.search-category {
+  padding: 7px 8px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background: #ffffff;
+  color: #333;
+  font-size: 14px;
+}
+
+.search-input {
+  padding: 7px 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  flex: 1;
+  min-width: 150px;
+  background: #ffffff;
+  color: #333;
+}
+
+.search-btn {
+  padding: 7px 14px;
+  border-radius: 6px;
+  background: #ffeb3b;
+  color: #14565E;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-btn:hover {
+  background: #ffc107;
+}
+
+/* ---------------- Hamburger Menu ---------------- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  transition: transform 0.3s ease;
+}
+
+.bar {
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+/* Hamburger animation when active */
+.hamburger.active .bar:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+/* ---------------- Tablet Screens ---------------- */
+@media screen and (max-width: 1024px) {
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  .search-form {
+    flex: 1;
+    justify-content: flex-end;
+  }
+}
+
+/* ---------------- Mobile Screens ---------------- */
+@media screen and (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .search-form {
+    width: 100%;
+    justify-content: center;
+    margin: 10px 0;
+    gap: 10px;
+  }
+
+  .search-category,
+  .search-input,
+  .search-btn {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  .search-form select,
+  .search-form input,
+  .search-form button {
+    flex: none;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 65px;
+    right: 0;
+    background: linear-gradient(135deg, #36aab9, #14565E);
+    flex-direction: column;
+    width: 280px;
+    height: calc(100vh - 65px);
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    padding: 20px 0;
+    z-index: 999;
+  }
+
+  .nav-links.open {
+    transform: translateX(0);
+    opacity: 1;
+    animation: slideIn 0.4s ease forwards;
+  }
+
+  .nav-links li a {
+    padding: 15px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .hamburger {
+    display: flex;
+    align-self: flex-end;
+    margin-bottom: 10px;
+  }
+}
+
+/* Slide animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ---------------- Small Mobile Screens ---------------- */
+@media screen and (max-width: 480px) {
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  .logo h1 {
+    font-size: 16px;
+  }
+
+  .logo img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .search-form {
+    gap: 8px;
+    margin: 8px 0;
+  }
+
+  .search-category,
+  .search-input,
+  .search-btn {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .nav-links {
+    width: 100%;
+    top: 60px;
+  }
+}
+
+/* ---------------- Extra Small Screens ---------------- */
+@media screen and (max-width: 360px) {
+  .logo h1 {
+    font-size: 14px;
+  }
+
+  .search-btn {
+    font-size: 13px;
+  }
+
+  .search-category,
+  .search-input {
+    font-size: 13px;
+  }
+}
